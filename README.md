@@ -128,7 +128,7 @@ The Libs folder holds all methods, libraries, and utils that are useful to autom
 
 ### runner.py (the entry point)
 
-There is a need to import all necessary libraries and modules together with filtering the tests and also producing reports. All peripheric matters are handled within the entry point of the tool: **tcrunner.py**. After setting up the test run, the script runs each test separately and produces an output with the test results.
+There is a need to import all necessary libraries and modules together with filtering the tests and also producing reports. All peripheric matters are handled within the entry point of the tool: **runner.py**. After setting up the test run, the script runs each test separately and produces an output with the test results.
 
 #### How the configuration of the tool works
 

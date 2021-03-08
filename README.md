@@ -22,6 +22,7 @@
 To deploy the tool:
 
 1. Clone the repository.
+  - git clone https://github.com/tecateca12/ecelona_trustar.git
 2. Fill out "config.json" to specify how to run tests
 3. For local execution make sure that all dependencies are satisfied, from project path root, run on terminal:
 

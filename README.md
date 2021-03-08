@@ -29,8 +29,8 @@ sudo apt-get update && install_packages \
 	python \
 	python-dev \
   python3-dev \
-	python-virtualenv \
-	python-pip \
+	python3-virtualenv \
+	python3-pip \
 	virtualenv \
 	git \
 	libnss3 \
@@ -44,15 +44,24 @@ sudo apt-get update && install_packages \
   curl \
   unzip \
   ca-certificates
-  
-sudo apt install python-pip
+sudo apt install git
+sudo apt install libnss3
+sudo apt install chromium-driver
+sudo apt install chromium-browser
+sudo apt install ffmpeg
+sudo apt-get install xvfb
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
+sudo apt install python3-pip
 
-pip install --upgrade pip # If youre running Ubuntu 18, use pip3 instead of pip: "pip3 install --upgrade pip"
+sudo pip install --upgrade pip # If youre running Ubuntu 18 or greater, use pip3 instead of pip: "sudo pip3 install --upgrade pip"
+
+sudo pip install virtualenv # If youre running Ubuntu 18 or greater, use pip3 instead of pip: "sudo pip3 install virtualenv"
 
 virtualenv --python=python3 .env
 
-/.env/bin/python -m pip install python-Levenshtein
-/.env/bin/python -m pip install lxml
+.env/bin/python -m pip install python-Levenshtein
+.env/bin/python -m pip install lxml
 
 .env/bin/python -m pip install -r requirements.txt
 

@@ -8,10 +8,12 @@
 #### UBUNTU Local solution
 
 - Python 3 (developed and tested under v 3.6.9)
+- Git
+- OS dependencies
 - All Python library dependencies (included in *requirements.txt*).
 
 #### Ubuntu - Docker solution
-
+- Git
 - Docker (developed and tested under v 19.03.10)
   - https://docs.docker.com/engine/install/ubuntu/
 

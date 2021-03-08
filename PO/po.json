@@ -1,0 +1,27 @@
+{
+  "Homepage": {
+    "ALIAS": "Homepage",
+    "PATH": "/home",
+    "ELEMENTS": {
+      "Search Input": {
+        "type": "x",
+        "locator": "//form[@id='searchForm']//input[@type='text']"
+       },
+      "Search button": {
+        "type": "x",
+        "locator": "//form[@id='searchForm']//a[@class='button-search']"
+      }
+    }
+  },
+  "Search Results page": {
+    "ALIAS": "Search Results page",
+    "PATH": "/search",
+    "ELEMENTS": {
+      "Counter div": {
+        "type": "x",
+        "locator": "//div[@class='data-count']"
+      }
+
+    }
+  }
+}

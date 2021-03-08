@@ -1,0 +1,13 @@
+{
+  "BROWSER": "chrome",
+  "URL_FOR_ENV": {
+    "prod": "https://techport.nasa.gov"
+  },
+  "ENV": "prod",
+  "API_KEY":"RrYQjCUjX8LEjnaXbyuDeIwgr7MbmnRwIgy0XzyG",
+  "API_URL":"https://api.nasa.gov/techport/api",
+  "VIRTUAL_DISPLAY": true,
+  "HEADLESS": true,
+  "BROWSER_WIDTH": 1920,
+  "BROWSER_HEIGHT": 1080
+}

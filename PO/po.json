@@ -20,8 +20,23 @@
       "Counter div": {
         "type": "x",
         "locator": "//div[@class='data-count']"
+      },
+      "Search Input": {
+        "type": "x",
+        "locator": "//form[@id='searchForm']//input[@type='text']"
+       },
+      "Search button": {
+        "type": "x",
+        "locator": "//form[@id='searchForm']//a[@class='button-search']"
+      },
+    "Paginator text": {
+        "type": "x",
+        "locator": "(//div[@class='results-pagination-group'])[1]"
+      },
+      "Result row": {
+        "type": "x",
+        "locator": "//div[@class='box1-general']//div[@data-id]"
       }
-
     }
   }
 }

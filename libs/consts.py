@@ -18,6 +18,18 @@ SEARCH_TYPES = {
     "cs": "find_element_by_css_selector",           # "cs": find by css selector
 }
 
+MULTIPLE_SEARCH_TYPES = {
+    "": "find_elements_by_id",
+    "id": "find_elements_by_id",
+    "x":  "find_elements_by_xpath",
+    "n":  "find_elements_by_name",
+    "lt": "find_elements_by_link_text",
+    "plt": "find_elements_by_partial_link_text",
+    "tn": "find_elements_by_tag_name",
+    "cn": "find_elements_by_class_name",
+    "cs": "find_elements_by_css_selector",
+}
+
 SEARCH_BY_TYPES = {
     "": None, # Used for PO
     "id": By.ID,
@@ -38,7 +50,8 @@ error_codes = {
     "URI Too Long": 414,
     "Bad Request": 400,
     "Not found": 404,
-    "Forbidden": 403
+    "Forbidden": 403,
+    "Method Not Allowed": 405
 }
 
 # Data_types
@@ -51,7 +64,7 @@ data_types = {
 
 
 # Valid Test Values
-valid_body = "Dummy Request Body"
+valid_body = "body"
 valid_project_ids = ["14405","96789","96332","93988"]
 
 # Invalid Test Values

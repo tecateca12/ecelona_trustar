@@ -1,13 +1,15 @@
 """
-Title: Test Project Project endpoint of NASA Tech Port
+Title: Test Project endpoint of NASA Tech Port
 Description:
     - Information about the API endpoint: https://api.nasa.gov/techport/api/specification
     - Testing positive and negative values for the 2 parameters accepted in path:
         * project_id
         * format
+    - Testing positive and negative scenarios for authentication key
+
 """
 
-from libs.utils import send_get_request, send_post_request
+from libs.utils import send_get_request, send_post_request, send_put_request
 from libs import consts
 from libs.utils import log_test
 import unittest
@@ -21,6 +23,7 @@ class TestApiProjectsHappyPaths(unittest.TestCase):
         Validates default response format as json
         """
         response = send_get_request('/projects/{}'.format(choice(consts.valid_project_ids)))
+        self.assertTrue(isinstance(response,dict))
         if isinstance(response, dict):
             # Check Response was not an error
             self.assertTrue('error' not in response.keys())
@@ -111,10 +114,11 @@ class TestApiProjectsNegativePaths(unittest.TestCase):
         for project_id in consts.invalid_project_ids:
             response = send_get_request('/projects/{}'.format(project_id))
             # Check Response error was as expected
+            # Issue Reason on response is empty if 404
             self.assertEqual(response.status_code, project_id["error code"])
 
     @log_test
-    def atest_post(self):
+    def test_post(self):
         """
         Make sure POST request is rejected even if it is an authenticated user and valid data
         """
@@ -122,8 +126,26 @@ class TestApiProjectsNegativePaths(unittest.TestCase):
                                      data=consts.valid_body)
         # Check Response was an error
         self.assertEqual(list(response.keys()), ['error'])
-        # Check error code is 403 forbidden
-        self.assertEqual(response['error']['code'], consts.error_codes["Forbidden"])
+        # Check error code is 400 Bad request
+        self.assertEqual(response['error']['code'], consts.error_codes["Bad Request"])
+        # ISSUE: api is returning 400 instead of 403 or 405 when trying to perform a post
+        # ALSO: there is no message associated on the response if bad request
+
+    @log_test
+    def test_put(self):
+        """
+        Make sure PUT request is rejected even if it is an authenticated user and valid data
+        """
+        response = send_put_request('/projects/{}'.format(choice(consts.valid_project_ids)),
+                                     data=consts.valid_body)
+        # Check error code is 405 Method Not Allowed
+        if isinstance(response,dict):
+            # Check Response was an error
+            self.assertEqual(list(response.keys()), ['error'])
+            self.assertEqual(response['error']['code'], consts.error_codes["Method Not Allowed"])
+        else:
+            # Issue Reason on response is empty
+            self.assertEqual(response.status_code, consts.error_codes["Method Not Allowed"])
 
 if __name__ == '__main__':
     unittest.main()

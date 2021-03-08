@@ -53,9 +53,11 @@ def send_request(url, data, **params):
     """
     if params['request_type'] == "POST":
         response = requests.post(builtins.API_URL + url + "?" + urllib.parse.urlencode(params),
-            data = data)
+            data= data)
     elif params['request_type'] == "GET":
         response = requests.get(builtins.API_URL + url + "?" + urllib.parse.urlencode(params))
+    elif params['request_type'] == "PUT":
+        response = requests.put(builtins.API_URL + url + "?" + urllib.parse.urlencode(params))
     else:
         raise ValueError("Request Type is not supported")
 
@@ -86,11 +88,21 @@ def send_post_request(url, data, **params):
     """
         Auxiliary method to load API TOKEN together with uri params to symplify testcase syntax
     """
-    params['api_key']= builtins.API_KEY
+    if 'api_key' not in params.keys():
+        params['api_key'] = builtins.API_KEY
     params['request_type']= "POST"
     return send_request(url, data, **params)
 
-def wait_for_page_to_load(tries=10, interval=0.2):
+def send_put_request(url, data, **params):
+    """
+        Auxiliary method to load API TOKEN together with uri params to symplify testcase syntax
+    """
+    if 'api_key' not in params.keys():
+        params['api_key'] = builtins.API_KEY
+    params['request_type']= "PUT"
+    return send_request(url, data, **params)
+
+def wait_for_page_to_load(tries=20, interval=0.5):
     """ Waits for the page to load"""
     time.sleep(0.5)
     for _ in range(tries):
@@ -131,6 +143,25 @@ def find_element(element, wait_for_element= True):
         except TimeoutException:
             raise ValueError("Could not wait for element [{}]{}".format(consts.SEARCH_BY_TYPES[el['type']],el['locator']))
     search_function = 'builtins.DRIVER.{}("{}")'.format(consts.SEARCH_TYPES[el['type']], el['locator'])
+    return eval(search_function)
+
+def find_elements(element, wait_for_element= True):
+    """ finds an element of idtype with value id """
+    find_current_page()
+    try:
+        assert CURRENT_PAGE
+    except:
+        raise ValueError("\"{}\" page wasn't found within PO".format(builtins.DRIVER.current_url))
+
+    el = find_po_element_by_alias(element)
+
+    if wait_for_element:
+        timer = int(wait_for_element) if type(wait_for_element) != bool else 10
+        try:
+            WebDriverWait(builtins.DRIVER, timer).until(EC.presence_of_element_located((consts.SEARCH_BY_TYPES[el['type']],el['locator'])))
+        except TimeoutException:
+            raise ValueError("Could not wait for element [{}]{}".format(consts.SEARCH_BY_TYPES[el['type']],el['locator']))
+    search_function = 'builtins.DRIVER.{}("{}")'.format(consts.MULTIPLE_SEARCH_TYPES[el['type']], el['locator'])
     return eval(search_function)
 
 def wait_for_element_to_be_present(element,wait_for_element=10):

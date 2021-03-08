@@ -7,12 +7,12 @@
 
 #### UBUNTU Local solution
 
-- Python 3
+- Python 3 (developed and tested under v 3.6.9)
 - All Python library dependencies (included in *requirements.txt*).
 
 #### Ubuntu - Docker solution
 
-- Docker 19.03.10
+- Docker (developed and tested under v 19.03.10)
   - https://docs.docker.com/engine/install/ubuntu/
 
 ### Deployment

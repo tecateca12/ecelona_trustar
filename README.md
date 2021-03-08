@@ -27,39 +27,32 @@ To deploy the tool:
 3. For local execution make sure that all dependencies are satisfied, from project path root, run on terminal:
 
 ```shell
+# Update UBUNTU packages 
+sudo apt-get -y upgrade
+
 # Install OS dependencies
-sudo apt-get update && install_packages \
-	python \
-	python-dev \
-  python3-dev \
-	python3-virtualenv \
-	python3-pip \
-	virtualenv \
-	git \
-	libnss3 \
-	xvfb \
-  ffmpeg \
-	gcc \
-  wget \
-  bzip2 \
-  chromium \
-  chromium-driver \
-  curl \
-  unzip \
-  ca-certificates
-sudo apt install git
-sudo apt install libnss3
-sudo apt install chromium-driver
-sudo apt install chromium-browser
-sudo apt install ffmpeg
-sudo apt-get install xvfb
+sudo apt-get -y install python3-dev
+sudo apt-get -y install python3-virtualenv
+sudo apt-get -y install python3-pip
+sudo apt-get -y install virtualenv
+sudo apt-get -y install git
+sudo apt-get -y install libnss3
+sudo apt-get -y install xvfb
+sudo apt-get -y install ffmpeg
+sudo apt-get -y install gcc
+sudo apt-get -y install wget
+sudo apt-get -y install bzip2
+sudo apt-get -y install curl
+sudo apt-get -y install unzip
+sudo apt-get -y install ca-certificates
+sudo apt-get -y install chromium-driver
+
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb
-sudo apt install python3-pip
 
-sudo pip install --upgrade pip # If youre running Ubuntu 18 or greater, use pip3 instead of pip: "sudo pip3 install --upgrade pip"
-
-sudo pip install virtualenv # If youre running Ubuntu 18 or greater, use pip3 instead of pip: "sudo pip3 install virtualenv"
+sudo apt -y install python3-pip
+sudo pip3 install --upgrade pip 
+sudo pip3 install virtualenv 
 
 virtualenv --python=python3 .env
 

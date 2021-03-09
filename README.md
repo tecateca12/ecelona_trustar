@@ -28,7 +28,7 @@ To deploy the tool:
 
 ```shell
 sudo chmod +x ./setup.sh
-./setup.sh
+sudo ./setup.sh
 ```
 4. Test everything works by running a test "python runner.py <testpath>" Do not forget to activate the venv first (details below)
 5. For Docker execution just to have docker installed is required, all dependencies are being satisfied while building the image.

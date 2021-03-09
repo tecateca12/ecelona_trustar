@@ -24,45 +24,13 @@ To deploy the tool:
 1. Clone the repository.
   - git clone https://github.com/tecateca12/ecelona_trustar.git
 2. Fill out "config.json" to specify how to run tests
-3. For local execution make sure that all dependencies are satisfied, from project path root, run on terminal:
+3. Make sure that all dependencies are satisfied, from project path root, run on terminal:
 
 ```shell
-# Update UBUNTU packages 
-sudo apt-get -y upgrade
-
-# Install OS dependencies
-sudo apt-get -y install python3-dev
-sudo apt-get -y install python3-virtualenv
-sudo apt-get -y install python3-pip
-sudo apt-get -y install virtualenv
-sudo apt-get -y install git
-sudo apt-get -y install libnss3
-sudo apt-get -y install xvfb
-sudo apt-get -y install ffmpeg
-sudo apt-get -y install gcc
-sudo apt-get -y install wget
-sudo apt-get -y install bzip2
-sudo apt-get -y install curl
-sudo apt-get -y install unzip
-sudo apt-get -y install ca-certificates
-sudo apt-get -y install chromium-driver
-
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install ./google-chrome-stable_current_amd64.deb
-
-sudo apt -y install python3-pip
-sudo pip3 install --upgrade pip 
-sudo pip3 install virtualenv 
-
-virtualenv --python=python3 .env
-
-.env/bin/python -m pip install python-Levenshtein
-.env/bin/python -m pip install lxml
-
-.env/bin/python -m pip install -r requirements.txt
-
+sudo chmod +x ./setup.sh
+sudo ./setup.sh
 ```
-4. Test everything works by running a test "python runner.py <testpath>"
+4. Test everything works by running a test "python runner.py <testpath>" Do not forget to activate the venv first (details below)
 5. For Docker execution just to have docker installed is required, all dependencies are being satisfied while building the image.
 
 ## Local execution
